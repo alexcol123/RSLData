@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>RedSocialLatina</title>
+
+
+
+  <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+   var config = {
+    apiKey: "AIzaSyBMBolwmO990V38V8qPQH4CTxjZa1Nu-7c",
+    authDomain: "tutorialfirebase-ae137.firebaseapp.com",
+    databaseURL: "https://tutorialfirebase-ae137.firebaseio.com",
+    projectId: "tutorialfirebase-ae137",
+    storageBucket: "tutorialfirebase-ae137.appspot.com",
+    messagingSenderId: "946847599041"
+  };
+
+   firebase.initializeApp(config);
+ </script>
+
+
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
+    crossorigin="anonymous">
+</head>
+
+
+
+<!-- Stylesheet ========================================================-->
+
+
+<style>
+
+  #content{
+margin: 20px auto;
+display: flex;
+flex-direction: column;
+width: 400px;
+text-align: center;
+}
+
+table{
+text-align: center;
+
+}
+td{
+padding: 5px;
+background: rgba(231, 206, 65, 0.438);
+}
+
+input[type="button"]{
+background:red;
+color: white;
+padding: 5px 8px;
+margin: 3px 8px;
+}
+input[type="button"]:hover{
+background:black;
+color: gold;
+
+}
+
+
+
+
+</style>
+
+
+
+<body>
+
+
+
+
+  <section>
+
+    <div id="content">
+
+      <h1>Firebase Database</h1>
+
+      <table border="1">
+        <tr>
+          <td>Id: </td>
+          <td><input type="text" name="id" id="user_id" /></td>
+        </tr>
+
+
+
+        <tr>
+          <td> User Name: </td>
+          <td><input type="text" name="user_name" id="user_name" /></td>
+        </tr>
+
+        <tr>
+          <td> Business Name: </td>
+          <td><input type="text" name="bussName" id="bussName" /></td>
+        </tr>
+
+
+
+
+        <tr>
+          <td> Phone: </td>
+          <td><input type="text" name="phone" id="phone" /></td>
+        </tr>
+
+        <tr>
+          <td> Type of Business: </td>
+          <td><input type="text" name="typeOfBuss" id="typeOfBuss" /></td>
+        </tr>
+
+
+        <tr>
+          <td> Hours: </td>
+          <td><input type="text" name="hrs" id="hours" /></td>
+        </tr>
+
+
+        <tr>
+          <td> Location: </td>
+          <td><input type="text" name="location" id="location" /></td>
+        </tr>
+
+        <tr>
+          <td> Website: </td>
+          <td><input type="text" name="website" id="website" /></td>
+        </tr>
+
+        <tr>
+          <td> Image: </td>
+          <td><input type="text" name="image" id="image" /></td>
+        </tr>
+
+
+        <tr>
+          <td> Owner/Manager: </td>
+          <td><input type="text" name="ownerName" id="ownerName" /></td>
+        </tr>
+
+        <tr>
+          <td> Owner/manager Cellphone: </td>
+          <td><input type="text" name="ownerCell" id="ownerCell" /></td>
+        </tr>
+
+
+
+
+
+
+        <tr>
+          <td colspan="2">
+            <input type="button" value="Save" onclick="save_user();" />
+            <input type="button" value="Update" onclick="update_user();" />
+            <input type="button" value="Delete" onclick="delete_user();" />
+          </td>
+        </tr>
+      </table>
+
+      <br><br><br>
+
+
+      <h2>Users List</h2>
+
+      <table id="tbl_users_list" border="1">
+        <tr>
+          <td>#ID</td>
+          <td>NAME</td>
+        </tr>
+      </table>
+    </div>
+
+
+
+
+  </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 mx-auto text-center">
+        <h1 class="p-2 text-danger">RedSocialLatina</h1>
+
+        <div class="img-fluid" id="imageDisplay"></div>
+        <br>
+
+        <h3 class="text-primary">View Item by Buss Name</h3>
+        <div id="profileDisplay"></div>
+        <br>
+        <br>
+
+
+
+
+        <h3 class="text-success">View Item by Type of buss</h3>
+        <div id="profileDisplay1"></div>
+        <br>
+        <br>
+
+
+
+        <h3 class="text-warning"> Hacer que aparscan profiles</h3>
+        <div id="profileDisplay2"></div>
+        <br>
+        <br>
+
+
+      </div>
+    </div>
+  </div>
+
+  <br>
+  <div class="container">
+    <div class="row">
+      <col-md-6 class="mx-auto text-center">
+        <button id="next" class="m-5 mx-auto btn btn-dark btn-block btn-lg">button</button>
+      </col-md-6>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+    crossorigin="anonymous"></script>
+  <script src="app.js"></script>
+</body>
+
+</html>
