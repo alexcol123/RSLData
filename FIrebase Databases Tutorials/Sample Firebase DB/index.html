@@ -1,0 +1,255 @@
+<html>
+
+<head>
+
+
+  <style>
+
+    #content{
+    margin: 20px auto;
+   display: flex;
+   flex-direction: column;
+   width: 400px;
+   text-align: center;
+  }
+
+table{
+  text-align: center;
+
+}
+td{
+  padding: 5px;
+  background: rgba(231, 206, 65, 0.438);
+}
+
+input[type="button"]{
+  background:red;
+  color: white;
+  padding: 5px 8px;
+  margin: 3px 8px;
+}
+input[type="button"]:hover{
+  background:black;
+  color: gold;
+ 
+}
+</style>
+
+
+
+  <title>Firebase</title>
+
+  <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+   var config = {
+    apiKey: "AIzaSyBMBolwmO990V38V8qPQH4CTxjZa1Nu-7c",
+    authDomain: "tutorialfirebase-ae137.firebaseapp.com",
+    databaseURL: "https://tutorialfirebase-ae137.firebaseio.com",
+    projectId: "tutorialfirebase-ae137",
+    storageBucket: "tutorialfirebase-ae137.appspot.com",
+    messagingSenderId: "946847599041"
+  };
+
+   firebase.initializeApp(config);
+ </script>
+</head>
+
+
+
+<body>
+
+
+
+  <div id="content">
+
+    <h1>Firebase Database</h1>
+
+    <table border="1">
+      <tr>
+        <td>Id: </td>
+        <td><input type="text" name="id" id="user_id" /></td>
+      </tr>
+      <tr>
+        <td> User Name: </td>
+        <td><input type="text" name="user_name" id="user_name" /></td>
+      </tr>
+
+
+      <tr>
+        <td colspan="2">
+          <input type="button" value="Save" onclick="save_user();" />
+          <input type="button" value="Update" onclick="update_user();" />
+          <input type="button" value="Delete" onclick="delete_user();" />
+        </td>
+      </tr>
+    </table>
+
+    <br><br><br>
+
+
+    <h2>Users List</h2>
+
+    <table id="tbl_users_list" border="1">
+      <tr>
+        <td>#ID</td>
+        <td>NAME</td>
+      </tr>
+    </table>
+  </div>
+
+
+
+
+
+
+  
+
+  <!-- Javascipt section ---------------------------------------------------------->
+
+
+  <script>
+    var tblUsers = document.getElementById('tbl_users_list');
+
+    var databaseRef = firebase.database().ref('users/');
+    var rowIndex = 1;
+
+    databaseRef.once('value', function (snapshot) {
+      // console.log(snapshot)
+
+      snapshot.forEach(childSnapshot => {
+        //console.log(childSnapshot)
+        var childKey = childSnapshot.key;
+        //console.log(childKey)
+        var childData = childSnapshot.val();
+        //console.log(childData)
+
+        // To view a list of the business by name
+        //console.log(childData.business_name)
+
+
+        var row = tblUsers.insertRow(rowIndex);
+        var cellId = row.insertCell(0);
+        var cellName = row.insertCell(1);
+
+        cellId.appendChild(document.createTextNode(childKey));
+
+        cellName.appendChild(document.createTextNode(childData.user_name));
+
+        rowIndex++
+
+      });
+    });
+
+
+
+    // Function to save a new user   ========================>
+
+    function save_user() {
+      var user_name = document.getElementById('user_name').value;
+
+      var uid = firebase.database().ref().child('users').push().key;
+
+      var data = {
+        user_id: uid,
+        user_name: user_name
+      }
+
+      var updates = {};
+      updates['/users/' + uid] = data;
+      firebase.database().ref().update(updates);
+
+      alert('The user is created successfully!');
+      reload_page();
+    }
+
+
+
+
+
+
+    // Function to update  a new user   ========================>
+
+    function update_user() {
+      var user_name = document.getElementById('user_name').value;
+      var user_id = document.getElementById('user_id').value;
+
+      var data = {
+        user_id: user_id,
+        user_name: user_name
+      }
+
+      var updates = {};
+      updates['/users/' + user_id] = data;
+      firebase.database().ref().update(updates);
+
+      alert('The user is updated successfully!');
+
+      reload_page();
+    }
+
+
+
+    // Function to deleta an user   ========================>
+
+    function delete_user() {
+      var user_id = document.getElementById('user_id').value;
+
+      firebase.database().ref().child('/users/' + user_id).remove();
+
+      alert("The User was deleted succesfully");
+
+      reload_page();
+
+    }
+
+
+
+    // Function to reload page  ========================>
+    function reload_page() {
+      document.location.reload();
+    }
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

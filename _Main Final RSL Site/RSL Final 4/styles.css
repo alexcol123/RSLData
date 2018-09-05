@@ -1,0 +1,30 @@
+
+
+  #content{
+margin: 20px auto;
+display: flex;
+flex-direction: column;
+width: 400px;
+text-align: center;
+}
+
+table{
+text-align: center;
+
+}
+td{
+padding: 5px;
+background: rgba(231, 206, 65, 0.438);
+}
+
+input[type="button"]{
+background:red;
+color: white;
+padding: 5px 8px;
+margin: 3px 8px;
+}
+input[type="button"]:hover{
+background:black;
+color: gold;
+
+}

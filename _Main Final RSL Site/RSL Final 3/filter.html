@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>RedSocialLatina</title>
+
+
+
+  <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyBMBolwmO990V38V8qPQH4CTxjZa1Nu-7c",
+      authDomain: "tutorialfirebase-ae137.firebaseapp.com",
+      databaseURL: "https://tutorialfirebase-ae137.firebaseio.com",
+      projectId: "tutorialfirebase-ae137",
+      storageBucket: "tutorialfirebase-ae137.appspot.com",
+      messagingSenderId: "946847599041"
+    };
+
+    firebase.initializeApp(config);
+  </script>
+
+
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+  <link rel="stylesheet" href="styles.css">
+
+
+</head>
+
+
+
+
+
+
+<body>
+
+
+
+
+
+
+  <!-- Navbar ---------------------------------------------------->
+
+
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <a class="navbar-brand " href="/">RedSocialLatina</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto">
+
+            <li class="nav-item active">
+              <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+            </li>
+
+
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li>
+
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Dropdown
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+                <a class="dropdown-item" href="/addBuss.html">Add Buss</a>
+                <div class="dropdown-divider"></div>
+
+                <a class="dropdown-item" href="/filter.html">Filter</a>
+                <div class="dropdown-divider"></div>
+
+                <a class="dropdown-item" href="#">upcomming link</a>
+              </div>
+            </li>
+          
+
+          </ul>
+          <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form>
+        </div>
+      </nav>
+
+
+
+  <!-- End of  Navbar ---------------------------------------------------->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="container">
+
+
+    <!-- Search   by typing store name-------------------------------------------------------------->
+
+    <div class="row mt-5 ">
+
+
+
+      <div class=" col-sm-7 col-12 pb-1 ">
+
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Busca por nombre del Negocio..." aria-label="Recipient's username"
+            aria-describedby="basic-addon2">
+          <div class="input-group-append">
+            <button class="btn btn-danger px-3" type="button">Button</button>
+          </div>
+        </div>
+
+
+      </div>
+
+
+    <!-- Search  select   by business type -------------------------------------------------------------->
+
+
+
+      <div class=" col-sm-5 col-12  pb-1 ">
+
+        <div class="input-group ">
+          <select class="custom-select" id="inputGroupSelect04">
+            <option selected>Tipo De Negocio...</option>
+            <option value="1">Restaurante</option>
+            <option value="2">Abogado</option>
+            <option value="3">Tienda Latina</option>
+          </select>
+          <div class="input-group-append">
+            <button class="btn btn-dark px-3" type="button">Filtrar</button>
+          </div>
+        </div>
+
+      </div>
+
+
+  
+
+</div>
+
+
+
+    <!-- Search  Alphabetically   -------------------------------------------------------------->
+
+
+    <div class="row mt-5  ">
+
+
+
+      <div class=" col-12 align-self-center">
+
+
+
+        <button type="button" class="btn btn-outline-dark">#</button>
+
+        <button type="button" class="btn btn-outline-primary">A</button>
+        <button type="button" class="btn btn-outline-secondary">B</button>
+        <button type="button" class="btn btn-outline-success">C</button>
+        <button type="button" class="btn btn-outline-danger">D</button>
+        <button type="button" class="btn btn-outline-warning">E</button>
+        <button type="button" class="btn btn-outline-info">F</button>
+        <button type="button" class="btn btn-outline-dark">G</button>
+
+
+        <button type="button" class="btn btn-outline-primary">H</button>
+        <button type="button" class="btn btn-outline-secondary">I</button>
+        <button type="button" class="btn btn-outline-success">J</button>
+        <button type="button" class="btn btn-outline-danger">K</button>
+        <button type="button" class="btn btn-outline-warning">L</button>
+        <button type="button" class="btn btn-outline-info">M</button>
+
+
+        <button type="button" class="btn btn-outline-dark">N</button>
+        <button type="button" class="btn btn-outline-primary">O</button>
+        <button type="button" class="btn btn-outline-secondary">P</button>
+        <button type="button" class="btn btn-outline-success">Q</button>
+        <button type="button" class="btn btn-outline-danger">R</button>
+        <button type="button" class="btn btn-outline-warning">S</button>
+        <button type="button" class="btn btn-outline-info">T</button>
+        <button type="button" class="btn btn-outline-dark">U</button>
+        <button type="button" class="btn btn-outline-primary">V</button>
+        <button type="button" class="btn btn-outline-secondary">W</button>
+        <button type="button" class="btn btn-outline-success">X</button>
+        <button type="button" class="btn btn-outline-danger">Y</button>
+        <button type="button" class="btn btn-outline-warning">Z</button>
+
+
+      </div>
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+    <!-- End Of  Container  ------------------------------------------------------------->
+  </div>
+
+
+
+
+
+
+  <br><br>
+  <br><br>
+  <br><br>
+  <br><br>
+  <br><br>  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 mx-auto text-center">
+        <h1 class="p-2 text-danger">RedSocialLatina</h1>
+
+        <div class="img-fluid" id="imageDisplay"></div>
+        <br>
+
+        <h3 class="text-primary">View Item by Buss Name</h3>
+        <div id="profileDisplay"></div>
+        <br>
+        <br>
+
+
+
+
+        <h3 class="text-success">View Item by Type of buss</h3>
+        <div id="profileDisplay1"></div>
+        <br>
+        <br>
+
+
+
+        <h3 class="text-warning"> Hacer que aparscan profiles</h3>
+        <div id="profileDisplay2"></div>
+        <br>
+        <br>
+
+
+      </div>
+    </div>
+  </div>
+
+  <br>
+  <div class="container">
+    <div class="row">
+      <col-md-6 class="mx-auto text-center">
+        <button id="next" class="m-5 mx-auto btn btn-dark btn-block btn-lg">button</button>
+      </col-md-6>
+    </div>
+  </div>
+
+
+
+
+  </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+  <div class="container">
+
+
+    <div class="row">
+      <div class="col-md-12">
+
+
+
+
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <label class="input-group-text" for="inputGroupSelect01">Options</label>
+          </div>
+          <select class="custom-select" id="inputGroupSelect01">
+            <option selected>Choose...</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+          </select>
+        </div>
+
+        <div class="input-group mb-3">
+          <select class="custom-select" id="inputGroupSelect02">
+            <option selected>Choose...</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+          </select>
+          <div class="input-group-append">
+            <label class="input-group-text" for="inputGroupSelect02">Options</label>
+          </div>
+        </div>
+
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <button class="btn btn-outline-secondary" type="button">Button</button>
+          </div>
+          <select class="custom-select" id="inputGroupSelect03" aria-label="Example select with button addon">
+            <option selected>Choose...</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+          </select>
+        </div>
+
+        <div class="input-group">
+          <select class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon">
+            <option selected>Choose...</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+          </select>
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="button">Button</button>
+          </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+        </col-md-12>
+
+
+
+
+      </div>
+    </div>
+
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+    crossorigin="anonymous"></script>
+  <script src="app.js"></script>
+</body>
+
+</html>
