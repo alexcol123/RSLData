@@ -1,7 +1,4 @@
 
-    var DataResults = [];
-
-
 
 const display = document.getElementById('profileDisplay');
 
@@ -40,26 +37,10 @@ function loadEventListeners(){
 
 
 
+
 var tblUsers = document.getElementById('tbl_users_list');
 var databaseRef = firebase.database().ref('users/');
 var rowIndex = 1;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -111,7 +92,7 @@ databaseRef.once('value', function (snapshot) {
 
 
 
-    function viewByBussFullData() {
+    function viewByBussName() {
 
 
 
@@ -236,7 +217,7 @@ databaseRef.once('value', function (snapshot) {
       display2.innerHTML += bussOutline;
 
     }
-    viewByBussFullData()
+    viewByBussName()
 
 
   });
@@ -397,7 +378,7 @@ databaseRef.once('value', function (snapshot) {
     var childData = childSnapshot.val();
 
 
-//console.log(childData)
+console.log(childData)
     //console.log(childData.user_name)
     //console.log(childKey) 
 
@@ -412,9 +393,6 @@ databaseRef.once('value', function (snapshot) {
     rowIndex = rowIndex + 1;
   });
 });
-
-
-
 
 
 
@@ -458,8 +436,7 @@ databaseRef.once('value', function (snapshot) {
       
       `;
 
-      DataResults.push(childData)
-      console.log(DataResults)
+
 
       display.innerHTML += results;
     }
