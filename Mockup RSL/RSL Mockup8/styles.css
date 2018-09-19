@@ -1,0 +1,155 @@
+body {
+  font-family: 'Times New Roman', Times, serif;
+}
+
+
+
+
+
+
+/* Overlay  Styles for Main section -------------------- */
+
+#showcase {
+  position: relative;
+  background: url("img/RVA1.jpg") top center no-repeat;
+  min-height: 100vh;
+  background-size: cover;
+  background-attachment: fixed;
+  overflow-y: hidden; }
+  #showcase h2 {
+    padding-top: 46vh;
+    font-size: 40px;
+    color: #ffc220 !important;
+    line-height: 110%;
+    text-shadow: 2px 2px 3px #000, -2px -2px 3px #000; }
+  #showcase h3 {
+    text-shadow: 2px 2px 1px #000, -2px -2px 1px #000; }
+  
+  #showcase p {
+    color: #fff !important; }
+  #showcase .primary-overlay {
+    background: rgba(0, 0, 0, 0.3);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; }
+
+/* Wnd  Overlay  Styles for Main section -------------------- */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Styles for Main section -------------------- */
+
+#overlay{
+  background: red;
+  z-index: 20;
+}
+#backgroundMain {
+  background: url(img/main6.jpg);
+  width: 100%;
+  height: 520px;
+  background-size: cover;
+}
+
+#MainCards .card {
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  border: solid 1px white;
+}
+#MainCards .card:hover {
+  background: red;
+  color: white;
+  border: solid 1px red;
+}
+/* CUSTOMIZE THE CAROUSEL
+-------------------------------------------------- */
+
+/* Carousel base class */
+.carousel {
+  margin-bottom: 4rem;
+}
+/* Since positioning the image, we need to help out the caption */
+.carousel-caption {
+  bottom: 3rem;
+  z-index: 10;
+}
+
+/* Declare heights because of positioning of img element */
+.carousel-item {
+  height: 40rem;
+  background-color: #777;
+}
+.carousel-item > img {
+  position: absolute;
+  top: 100;
+  left: 0;
+  min-width: 100%;
+  height: auto;
+  background-size: cover;
+}
+
+.bgimg-1,
+.bgimg-2,
+.bgimg-3 {
+  position: relative;
+  opacity: 0.95;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.bgimg-1 {
+  background-image: url(img/brandnames.jpg);
+  height: 270px;
+}
+.bgimg-2 {
+  background-image: url(img/paralaxBuss13.jpg);
+  height: 270px;
+}
+
+.caption {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 100%;
+  text-align: center;
+  color: #000;
+}
+
+.caption span.border {
+  background-color: #111;
+  color: #fff;
+  padding: 12px;
+  font-size: 20px;
+  letter-spacing: 8px;
+}
+
+#Jumbotron1 {
+  background: url(img/RVA1.jpg) top center no-repeat;
+  background-size: cover;
+  height: 100vh;
+}
+#jumbotron-background-color {
+  margin: 70px;
+  margin-top: 10%;
+  background: #d4c825da;
+  color: rgb(0, 0, 0);
+}

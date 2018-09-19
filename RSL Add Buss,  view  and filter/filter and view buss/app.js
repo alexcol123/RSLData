@@ -1,108 +1,64 @@
-
-
 const display = document.getElementById('profileDisplay');
 
 const display1 = document.getElementById('profileDisplay1');
 
 const display2 = document.getElementById('profileDisplay2');
 
+const filterByBussName = document.getElementById('filterByBussName');
 
 
 
 
+// Function to load event listeners
 
+function loadEventListeners() {
+  // filter by filterByBussName
+  filterByBussName.addEventListener('keyup', filterBYBussNameFunc);
+}
 
-
-
-
-
+loadEventListeners();
 
 var tblUsers = document.getElementById('tbl_users_list');
 var databaseRef = firebase.database().ref('users/');
 var rowIndex = 1;
 
-
-
-
-
-
-// FUction to view Buss my Buss name ------------------------>
-
-databaseRef.once('value', function (snapshot) {
-  snapshot.forEach(function (childSnapshot) {
-    var childKey = childSnapshot.key;
-    var childData = childSnapshot.val();
-
-
-    console.log(childData.location)
-
-
-    var results = '';
-
-    function viewByBussName() {
-
-      results += `
-        <a href="https://www.google.com/" class="list-group-item list-group-item-action">${childData.business_name}</a>
-      
-      `;
-      display.innerHTML += results;
-    }
-
-    viewByBussName()
-
-  });
-});
-
-
-
 // FUction to view Buss my Type of buss ------------------------>
 
-databaseRef.once('value', function (snapshot) {
-  snapshot.forEach(function (childSnapshot) {
+databaseRef.once('value', function(snapshot) {
+  snapshot.forEach(function(childSnapshot) {
     var childKey = childSnapshot.key;
     var childData = childSnapshot.val();
 
-
-    console.log(childData.location)
-
+    //console.log(childData.location)
 
     var results = '';
 
     function viewByBussType() {
-
       results += `
-        <a href="https://www.google.com/" class="list-group-item list-group-item-action">${childData.typeOfBuss}</a>
+        <a href="https://www.google.com/" class="list-group-item list-group-item-action">${
+          childData.typeOfBuss
+        }</a>
       
       `;
       display1.innerHTML += results;
     }
 
-    viewByBussType()
-
+    viewByBussType();
   });
 });
 
-
-
-
-
 // FUction to view Bussiness Profiles ------------------------>
 
-databaseRef.once('value', function (snapshot) {
-  snapshot.forEach(function (childSnapshot) {
+databaseRef.once('value', function(snapshot) {
+  snapshot.forEach(function(childSnapshot) {
     var childKey = childSnapshot.key;
     var childData = childSnapshot.val();
 
     var bussOutline = '';
 
-    console.log(childData.location)
-
-
+    // console.log(childData.location)
 
     function viewByBussName() {
-
-
-
       bussOutline += `
       <ul class="mb-5 mt-5">
       <li class="list-group-item bg-danger text-white">
@@ -183,7 +139,11 @@ databaseRef.once('value', function (snapshot) {
       </span>
 
       <span> 
-        <a href="${childData.website}"  target="_blank" class="btn btn-success btn-block ">${childData.business_name}</a>
+        <a href="${
+          childData.website
+        }"  target="_blank" class="btn btn-success btn-block ">${
+        childData.business_name
+      }</a>
     </span>
     
       </li>
@@ -220,30 +180,20 @@ databaseRef.once('value', function (snapshot) {
     </ul>
       `;
 
-
       display2.innerHTML += bussOutline;
-
     }
-    viewByBussName()
-
-
+    viewByBussName();
   });
 });
-
-
-
-
-
-
-
-
 
 // Fucntion Add user --------------------------------------------------->
 
 function save_user() {
-
-
-  var uid = firebase.database().ref().child('users').push().key;
+  var uid = firebase
+    .database()
+    .ref()
+    .child('users')
+    .push().key;
   var user_name = document.getElementById('user_name').value;
 
   var bussName = document.getElementById('bussName').value;
@@ -256,10 +206,7 @@ function save_user() {
   var ownerName = document.getElementById('ownerName').value;
   var ownerCell = document.getElementById('ownerCell').value;
 
-
-
   var data = {
-
     user_id: uid,
     user_name: user_name,
 
@@ -272,32 +219,30 @@ function save_user() {
     image: image,
     ownerName: ownerName,
     ownerCell: ownerCell
-
-
-  }
+  };
 
   var updates = {};
   updates['/users/' + uid] = data;
-  firebase.database().ref().update(updates);
+  firebase
+    .database()
+    .ref()
+    .update(updates);
 
   alert('The user is created successfully!');
   reload_page();
 }
 
-
-
-
-
 // Fucntion Update user --------------------------------------------------->
-
 
 function update_user() {
   var user_name = document.getElementById('user_name').value;
   var user_id = document.getElementById('user_id').value;
 
-
-
-  var uid = firebase.database().ref().child('users').push().key;
+  var uid = firebase
+    .database()
+    .ref()
+    .child('users')
+    .push().key;
   var user_name = document.getElementById('user_name').value;
 
   var bussName = document.getElementById('bussName').value;
@@ -310,10 +255,7 @@ function update_user() {
   var ownerName = document.getElementById('ownerName').value;
   var ownerCell = document.getElementById('ownerCell').value;
 
-
-
   var data = {
-
     user_id: uid,
     user_name: user_name,
 
@@ -326,45 +268,79 @@ function update_user() {
     image: image,
     ownerName: ownerName,
     ownerCell: ownerCell
-  }
-
-
+  };
 
   var updates = {};
   updates['/users/' + user_id] = data;
-  firebase.database().ref().update(updates);
+  firebase
+    .database()
+    .ref()
+    .update(updates);
 
   alert('The user is updated successfully!');
 
   reload_page();
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // Fucntion Delete user --------------------------------------------------->
 function delete_user() {
   var user_id = document.getElementById('user_id').value;
 
-  firebase.database().ref().child('/users/' + user_id).remove();
+  firebase
+    .database()
+    .ref()
+    .child('/users/' + user_id)
+    .remove();
   alert('The user is deleted successfully!');
   reload_page();
 }
 
-
-
 // Fucntion reload page  --------------------------------------------------->
 function reload_page() {
   window.location.reload();
+}
+
+// FUction to view Buss my Buss name ------------------------>
+
+databaseRef.once('value', function(snapshot) {
+  snapshot.forEach(function(childSnapshot) {
+    var childKey = childSnapshot.key;
+    var childData = childSnapshot.val();
+
+    //console.log(childData.location)
+
+    var results = '';
+
+    function viewByBussName() {
+      results += `
+        <a href="https://www.google.com/" class="     viewItem list-group-item list-group-item-action">${
+          childData.business_name
+        }</a>
+      
+      `;
+
+      display.innerHTML += results;
+    }
+
+    viewByBussName();
+  });
+});
+
+// Func to filter by buss Name -----------------------------
+
+function filterBYBussNameFunc(e) {
+  const text = e.target.value.toLowerCase();
+  console.log(text);
+
+  e.preventDefault();
+
+  document.querySelectorAll('.viewItem').forEach(function(ver) {
+    const item = ver.firstChild.textContent;
+
+    if (item.toLowerCase().indexOf(text) != -1) {
+      ver.style.display = 'block';
+    } else {
+      ver.style.display = 'none';
+    }
+  });
 }
